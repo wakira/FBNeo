@@ -616,7 +616,10 @@ static INT32 DrvScan(INT32 nAction, INT32 *pnMin)
 	}
 
 	if (nAction & ACB_VOLATILE) {
-		ScanVar(AllRam, RamEnd - AllRam, "All RAM");
+		ScanVar(DrvMainRAM, 0x1000000, "Main RAM");
+		if (~nAction & ACB_RUNAHEAD) {
+			ScanVar(DrvCacheRAM, 0x1000000, "Cache RAM");
+		}
 	}
 
 	if (nAction & ACB_DRIVER_DATA)
