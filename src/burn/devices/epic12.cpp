@@ -316,7 +316,7 @@ void epic12_init(INT32 ram_size, UINT16 *ram, UINT8 *dippy)
 
 	m_clip.set(0, 0x2000-1, 0, 0x1000-1);
 
-	m_delay_scale = 50;
+	m_delay_scale = 100;
 	m_blitter_busy = 0;
 	m_gfx_addr = 0;
 	m_gfx_scroll_0_x = 0;
@@ -821,7 +821,7 @@ static void gfx_exec_write(UINT32 offset, UINT32 data)
 			if (epic12_device_blit_delay && m_delay_scale)
 			{
 				m_blitter_busy = 1;
-				int delay = epic12_device_blit_delay*(15 * m_delay_scale / 50);
+				int delay = epic12_device_blit_delay*(15 * m_delay_scale / 100);
 				INT32 cycles = (INT32)((double)((double)delay / 1000000000) * sh4_get_cpu_speed());
 
 				sh4_set_cave_blitter_delay_timer(cycles);
