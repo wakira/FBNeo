@@ -821,7 +821,7 @@ static void gfx_exec_write(UINT32 offset, UINT32 data)
 			if (epic12_device_blit_delay && m_delay_scale)
 			{
 				m_blitter_busy = 1;
-				int delay = epic12_device_blit_delay*(15 * m_delay_scale / 100);
+				int delay = epic12_device_blit_delay*(15 * m_delay_scale / 500);
 				INT32 cycles = (INT32)((double)((double)delay / 1000000000) * sh4_get_cpu_speed());
 
 				sh4_set_cave_blitter_delay_timer(cycles);
